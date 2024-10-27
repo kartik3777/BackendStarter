@@ -1,24 +1,27 @@
 const nodemailer = require('nodemailer');
 
-const sendEmail = async options => {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'champ12bro@gmail.com', 
-      pass: 'usepmdegmybidofa'  
+const sendEmail =  async options => {
+    // create a transporter
+   const transporter = nodemailer.createTransport({
+    // we are doing this from maitrop.io only for testing
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    auth:{
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
     }
-  });
+   })
 
-
-  const mailOptions = {
-    from: 'CentralisedProjectIntegration Team <champ12bro@gmail.com>',
+   //define email otpions
+   const mailOptions ={
+    from: "kartik <kartik.io>",
     to: options.email,
     subject: options.subject,
     text: options.message
-  };
 
-  // 3) Actually send the email
-  await transporter.sendMail(mailOptions);
-};
+   }
+   
+   await transporter.sendMail(mailOptions);
+}
 
 module.exports = sendEmail;

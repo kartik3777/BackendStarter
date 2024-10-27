@@ -178,14 +178,17 @@ const sendotp = catchAsync(async (req,res,next)=>{
   try{
     await sendEmail({
       email: req.body.email,
-      subject: 'OTP for centralized project Integration signup',
-      message : `Enter the otp to signup in Centralised Project Integration ${otpValue}`
+      subject: 'OTP',
+      message : `Your OTP for sign up in starter is:  ${otpValue}`
 
     });
+    console.log("otp: "+otpValue);
+    
     res.status(201).json({
       message : "success",
       otp : `${otpValue}`
     })
+
   }catch{
     res.status(404).json({
       meassge : "Email not send "
