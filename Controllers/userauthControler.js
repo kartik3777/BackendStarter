@@ -1,7 +1,6 @@
 const util = require('util')
 const userModel = require('./../Models/usermodels')
 const jwt = require('jsonwebtoken')
-const AppError = require('./../utils/appError')
 const catchAsync = require('../utils/catchAsync')
 const sendEmail = require('./../utils/email')
 const crypto = require('crypto')

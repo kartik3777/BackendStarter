@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const express = require('express')
 const dotenv = require('dotenv')
 dotenv.config({path:'./config.env'})
-const userRoutes = require('./Routes/userRoutes')
+const userRoutes = require('../Routes/userRoutes')
 const cors = require ('cors')
 
 
@@ -33,10 +33,11 @@ app.all('*', (req, res, next) => {
     console.log(`Can't find ${req.originalUrl} on this server!`, 404);
 })
 
-
-const port = process.env.PORT    
+const port = process.env.PORT ||5000   
 app.listen(port,()=>{
     console.log(`App running on http://localhost:${port}`)
 })
 
+
+module.exports = app;
 
